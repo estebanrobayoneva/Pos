@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_afiliacion: 2017-03-16
+  periodicidad: MyString
+  fecha_vencimiento: 2017-03-16
+  fecha_cuota: 2017-03-16
+
+two:
+  fecha_afiliacion: 2017-03-16
+  periodicidad: MyString
+  fecha_vencimiento: 2017-03-16
+  fecha_cuota: 2017-03-16

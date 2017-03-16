@@ -10,7 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316055236) do
+ActiveRecord::Schema.define(version: 20170316072259) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.integer  "documento"
+    t.string   "tipo_documento"
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "telefono"
+    t.string   "direccion"
+    t.string   "pais"
+    t.string   "ciudad"
+    t.string   "email"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "detail_purchase_receipts", force: :cascade do |t|
+    t.integer  "cantidad"
+    t.decimal  "valor_total"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.integer  "cantidad_producto"
+    t.decimal  "precio"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.integer  "descuento_porcentaje"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.date     "fecha_afiliacion"
+    t.string   "periodicidad"
+    t.date     "fecha_vencimiento"
+    t.date     "fecha_cuota"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "outflows", force: :cascade do |t|
+    t.date     "fecha"
+    t.string   "concepto"
+    t.integer  "nit"
+    t.string   "entidad"
+    t.integer  "numero_factura"
+    t.decimal  "valor"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "payment_ways", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "nombre"
@@ -19,6 +86,44 @@ ActiveRecord::Schema.define(version: 20170316055236) do
     t.decimal  "valor_total_curso"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.integer  "nit"
+    t.string   "nombre"
+    t.string   "departamento"
+    t.string   "ciudad"
+    t.string   "telefono"
+    t.string   "direccion"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "purchase_receipts", force: :cascade do |t|
+    t.date     "fecha"
+    t.integer  "numero_factura"
+    t.integer  "cantidad"
+    t.decimal  "costu_unitario"
+    t.decimal  "valor_total"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.date     "fecha"
+    t.float    "valor_total"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "societies", force: :cascade do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.float    "val_anual"
+    t.float    "val_semestral"
+    t.float    "val_mensual"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

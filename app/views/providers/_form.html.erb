@@ -1,0 +1,47 @@
+<%= form_for(provider) do |f| %>
+  <% if provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+      <% provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nit %>
+    <%= f.number_field :nit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :departamento %>
+    <%= f.text_field :departamento %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciudad %>
+    <%= f.text_field :ciudad %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= f.label :direccion %>
+    <%= f.text_field :direccion %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

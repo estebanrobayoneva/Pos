@@ -1,0 +1,62 @@
+<%= form_for(client) do |f| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :documento %>
+    <%= f.number_field :documento %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo_documento %>
+    <%= f.text_field :tipo_documento %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido %>
+    <%= f.text_field :apellido %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= f.label :direccion %>
+    <%= f.text_field :direccion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pais %>
+    <%= f.text_field :pais %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ciudad %>
+    <%= f.text_field :ciudad %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

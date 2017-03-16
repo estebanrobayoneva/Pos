@@ -1,0 +1,2 @@
+class DetailPurchaseReceipt < ApplicationRecord
+end
