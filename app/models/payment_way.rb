@@ -1,2 +1,3 @@
 class PaymentWay < ApplicationRecord
+    
 end

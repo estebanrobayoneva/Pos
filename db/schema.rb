@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316072259) do
+ActiveRecord::Schema.define(version: 20170316165700) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "nombre"
@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 20170316072259) do
   create_table "detail_purchase_receipts", force: :cascade do |t|
     t.integer  "cantidad"
     t.decimal  "valor_total"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "purchase_receipts_id"
   end
 
   create_table "details", force: :cascade do |t|
@@ -45,12 +46,16 @@ ActiveRecord::Schema.define(version: 20170316072259) do
     t.decimal  "precio"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "receipt_id"
+    t.integer  "product_id"
   end
 
   create_table "discounts", force: :cascade do |t|
     t.integer  "descuento_porcentaje"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "society_id"
+    t.integer  "category_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -60,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170316072259) do
     t.date     "fecha_cuota"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "society_id"
   end
 
   create_table "outflows", force: :cascade do |t|
@@ -71,6 +77,12 @@ ActiveRecord::Schema.define(version: 20170316072259) do
     t.decimal  "valor"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "payment_ways", force: :cascade do |t|
@@ -86,6 +98,7 @@ ActiveRecord::Schema.define(version: 20170316072259) do
     t.decimal  "valor_total_curso"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "category_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -102,18 +115,20 @@ ActiveRecord::Schema.define(version: 20170316072259) do
   create_table "purchase_receipts", force: :cascade do |t|
     t.date     "fecha"
     t.integer  "numero_factura"
-    t.integer  "cantidad"
-    t.decimal  "costu_unitario"
     t.decimal  "valor_total"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "provider_id"
   end
 
   create_table "receipts", force: :cascade do |t|
     t.date     "fecha"
     t.float    "valor_total"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "society_id"
+    t.integer  "client_id"
+    t.integer  "payment_method_id"
   end
 
   create_table "societies", force: :cascade do |t|
@@ -139,6 +154,8 @@ ActiveRecord::Schema.define(version: 20170316072259) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
